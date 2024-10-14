@@ -59,6 +59,35 @@ class Manager(Employee):
             self.happiness -= 1
         else:
             self.happiness += 1
+    def interact(self, other):
+        if other.name not in self.relationships:
+            self.relationships[other.name] = 0
+            other.relationships[self.name] = 0
+        elif self.relationships[other.name] > 10:
+            self.happiness += 1
+            other.happiness += 1
+        elif self.happiness > 50 and other.happiness > 50:
+            self.relationships[other.name] += 1
+            other.relationships[self.name] += 1
+        else:
+            self.relationships[other.name] -= 1
+            other.relationships[self.name] -= 1
+            self.happiness -= 1
+            other.happiness -= 1
+        
+        
+        
+
+        def daily_expense(self):
+            self.happiness -= 1
+            self.savings -= 60
+
+        def __str__(self):
+            return (f"{self.name}\n"
+                f"Salary: ${self.salary:.2f}\n"
+                f"Savings: ${self.savings:.2f}\n"
+                f"Happiness: {self.happiness}%\n"
+                f"Performance: {self.performance}%")
 
 
 class TemporaryEmployee(Employee):
